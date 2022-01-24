@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: minikubebackend
+      http:
+        paths:
+          - path: /
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 8080
